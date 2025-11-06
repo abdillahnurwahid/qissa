@@ -18,8 +18,12 @@
                 Video
             </a>
             <a href="{{ route('user.artikel') }}" 
-               class="font-semibold text-white {{ request()->routeIs('user.artikel') ? 'border-b-2 border-white' : 'text-opacity-80 hover:text-opacity-100' }}">
+               class="font-semibold text-white {{ request()->routeIs('user.artikel*') ? 'border-b-2 border-white' : 'text-opacity-80 hover:text-opacity-100' }}">
                 Artikel
+            </a>
+            <a href="{{ route('user.request.list') }}" 
+               class="font-semibold text-white {{ request()->routeIs('user.request.*') ? 'border-b-2 border-white' : 'text-opacity-80 hover:text-opacity-100' }}">
+                Request
             </a>
             <a href="{{ route('user.favorit') }}" 
                class="font-semibold text-white {{ request()->routeIs('user.favorit') ? 'border-b-2 border-white' : 'text-opacity-80 hover:text-opacity-100' }}">

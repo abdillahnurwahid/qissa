@@ -11,23 +11,35 @@ use Livewire\Attributes\Title;
 #[Title('Request Management - Qissa+')]
 class RequestManagement extends Component
 {
+    public $statusFilter = 'pending';
+
     public function approve($requestId)
     {
         $request = ContentRequest::findOrFail($requestId);
         $request->update(['status' => 'approved']);
-        session()->flash('success', 'Request berhasil disetujui!');
+        
+        session()->flash('success', 'Request disetujui! Sekarang bisa mulai dibuat kontennya.');
     }
 
     public function reject($requestId)
     {
         $request = ContentRequest::findOrFail($requestId);
         $request->update(['status' => 'rejected']);
-        session()->flash('success', 'Request ditolak!');
+        
+        session()->flash('success', 'Request ditolak.');
+    }
+
+    public function delete($requestId)
+    {
+        ContentRequest::findOrFail($requestId)->delete();
+        session()->flash('success', 'Request berhasil dihapus!');
     }
 
     public function render()
     {
-        $requests = ContentRequest::pending()
+        $requests = ContentRequest::when($this->statusFilter !== 'all', function($query) {
+                $query->where('status', $this->statusFilter);
+            })
             ->with('user')
             ->byPriority()
             ->latest()

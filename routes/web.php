@@ -31,6 +31,8 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::get('/artikel', \App\Livewire\User\ArtikelList::class)->name('artikel');
     Route::get('/artikel/{id}', \App\Livewire\User\ArtikelDetail::class)->name('artikel.show');
     Route::get('/favorit', \App\Livewire\User\FavoritList::class)->name('favorit');
+    Route::get('/request/new', \App\Livewire\User\ContentRequestForm::class)->name('request.form');
+    Route::get('/request/list', \App\Livewire\User\ContentRequestList::class)->name('request.list');
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
