@@ -3,25 +3,41 @@
 namespace App\Livewire\User;
 
 use App\Models\Video;
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 
 #[Layout('layouts.user')]
 #[Title('Video - Qissa+')]
 class VideoList extends Component
 {
     public $search = '';
+    
+    #[Url(as: 'category')]
     public $selectedCategory = null;
+
+    public function mount()
+    {
+        // Get category from URL query parameter
+        $this->selectedCategory = request()->query('category');
+    }
+
+    public function filterByCategory($categoryId)
+    {
+        $this->selectedCategory = $categoryId;
+    }
+
+    public function clearFilter()
+    {
+        $this->selectedCategory = null;
+    }
 
     public function watchVideo($videoId)
     {
         $video = Video::findOrFail($videoId);
-        
-        // Increment views
         $video->incrementViews();
-        
-        // Redirect ke YouTube
         return redirect()->away($video->video_url);
     }
 
@@ -44,9 +60,12 @@ class VideoList extends Component
 
     public function render()
     {
+        $categories = Category::withCount('videos')->get();
+        
         $videos = Video::approved()
             ->when($this->search, function($query) {
-                $query->where('title', 'like', '%' . $this->search . '%');
+                $query->where('title', 'like', '%' . $this->search . '%')
+                      ->orWhere('description', 'like', '%' . $this->search . '%');
             })
             ->when($this->selectedCategory, function($query) {
                 $query->where('category_id', $this->selectedCategory);
@@ -55,6 +74,10 @@ class VideoList extends Component
             ->latest()
             ->get();
 
-        return view('livewire.user.video-list', compact('videos'));
+        $currentCategory = $this->selectedCategory 
+            ? Category::find($this->selectedCategory) 
+            : null;
+
+        return view('livewire.user.video-list', compact('videos', 'categories', 'currentCategory'));
     }
 }

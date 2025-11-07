@@ -29,15 +29,23 @@
     <!-- Popular Categories -->
     <div>
         <h3 class="text-lg font-bold text-[var(--burgundy)] mb-3">Kategori Populer</h3>
+        <p class="text-sm text-gray-600 mb-4">Klik kategori untuk melihat video & artikel terkait</p>
+        
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
             @forelse($categories as $category)
-                <div class="bg-white border-2 border-[var(--burgundy)] text-[var(--burgundy)] p-4 rounded-xl text-center font-bold text-sm hover:bg-[var(--burgundy)] hover:text-white transition cursor-pointer">
-                    {{ $category->name }}
-                </div>
+                <button 
+                    wire:click="filterByCategory({{ $category->id }}, 'video')"
+                    class="bg-white border-2 border-[var(--burgundy)] text-[var(--burgundy)] p-4 rounded-xl text-center font-bold text-sm hover:bg-[var(--burgundy)] hover:text-white transition cursor-pointer group">
+                    <div class="mb-2">{{ $category->name }}</div>
+                    <div class="text-xs text-gray-500 group-hover:text-white">
+                        📹 {{ $category->videos_count }} video
+                        <br>
+                        📝 {{ $category->artikels_count }} artikel
+                    </div>
+                </button>
             @empty
                 <div class="col-span-5 text-center text-gray-500 py-8">Belum ada kategori</div>
             @endforelse
         </div>
     </div>
 </div>
-

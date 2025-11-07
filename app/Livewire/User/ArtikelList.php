@@ -3,25 +3,40 @@
 namespace App\Livewire\User;
 
 use App\Models\Artikel;
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 
 #[Layout('layouts.user')]
 #[Title('Artikel - Qissa+')]
 class ArtikelList extends Component
 {
     public $search = '';
+    
+    #[Url(as: 'category')]
     public $selectedCategory = null;
+
+    public function mount()
+    {
+        $this->selectedCategory = request()->query('category');
+    }
+
+    public function filterByCategory($categoryId)
+    {
+        $this->selectedCategory = $categoryId;
+    }
+
+    public function clearFilter()
+    {
+        $this->selectedCategory = null;
+    }
 
     public function readArtikel($artikelId)
     {
         $artikel = Artikel::findOrFail($artikelId);
-        
-        // Increment views
         $artikel->incrementViews();
-        
-        // Redirect ke detail artikel
         return redirect()->route('user.artikel.show', $artikel->id);
     }
 
@@ -44,9 +59,12 @@ class ArtikelList extends Component
 
     public function render()
     {
+        $categories = Category::withCount('artikels')->get();
+        
         $artikels = Artikel::approved()
             ->when($this->search, function($query) {
-                $query->where('title', 'like', '%' . $this->search . '%');
+                $query->where('title', 'like', '%' . $this->search . '%')
+                      ->orWhere('content', 'like', '%' . $this->search . '%');
             })
             ->when($this->selectedCategory, function($query) {
                 $query->where('category_id', $this->selectedCategory);
@@ -55,7 +73,10 @@ class ArtikelList extends Component
             ->latest()
             ->get();
 
-        return view('livewire.user.artikel-list', compact('artikels'));
+        $currentCategory = $this->selectedCategory 
+            ? Category::find($this->selectedCategory) 
+            : null;
+
+        return view('livewire.user.artikel-list', compact('artikels', 'categories', 'currentCategory'));
     }
 }
-

@@ -14,6 +14,16 @@ use Livewire\Attributes\Title;
 #[Title('Dashboard - Qissa+')]
 class Dashboard extends Component
 {
+    public function filterByCategory($categoryId, $type = 'video')
+    {
+        // Redirect ke halaman video/artikel dengan filter kategori
+        if ($type === 'video') {
+            return redirect()->route('user.video', ['category' => $categoryId]);
+        } else {
+            return redirect()->route('user.artikel', ['category' => $categoryId]);
+        }
+    }
+
     public function render()
     {
         $stats = [
@@ -23,7 +33,7 @@ class Dashboard extends Component
             'platform_rating' => 4.8,
         ];
 
-        $categories = Category::take(5)->get();
+        $categories = Category::withCount(['videos', 'artikels'])->get();
 
         return view('livewire.user.dashboard', compact('stats', 'categories'));
     }
