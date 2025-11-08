@@ -30,6 +30,9 @@
             <span class="flex items-center gap-1">
                 ⭐ {{ number_format($artikel->votes) }} votes
             </span>
+            <span class="flex items-center gap-1">
+        💬 {{ $artikel->comments->count() }} komentar
+            </span>
         </div>
 
         <!-- Favorite & Share Actions -->
@@ -67,4 +70,8 @@
             </div>
         </div>
     </div>
+     @livewire('comment-section', [
+        'commentable' => $artikel,
+        'commentableType' => 'App\Models\Artikel'
+    ])
 </div>

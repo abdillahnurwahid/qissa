@@ -68,4 +68,9 @@ class Artikel extends Model
     {
         $this->increment('votes');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }
