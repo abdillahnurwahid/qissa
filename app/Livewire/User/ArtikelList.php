@@ -33,11 +33,37 @@ class ArtikelList extends Component
         $this->selectedCategory = null;
     }
 
-    public function readArtikel($artikelId)
+     public function readArtikel($artikelId)
     {
         $artikel = Artikel::findOrFail($artikelId);
-        $artikel->incrementViews();
+        
+        // Anti-spam view tracking
+        $this->trackView($artikel, 'artikel');
+        
+        // Redirect ke detail artikel
         return redirect()->route('user.artikel.show', $artikel->id);
+    }
+
+    private function trackView($content, $type)
+    {
+        $contentId = $content->id;
+        $ipAddress = request()->ip();
+        
+        $viewKey = "view_{$type}_{$contentId}_{$ipAddress}";
+        $cookieKey = "viewed_{$type}_{$contentId}";
+        
+        if (session()->has($viewKey)) {
+            return;
+        }
+        
+        if (request()->cookie($cookieKey)) {
+            return;
+        }
+        
+        $content->incrementViews();
+        
+        session()->put($viewKey, true);
+        cookie()->queue($cookieKey, true, 120);
     }
 
     public function toggleFavorite($artikelId)
@@ -58,25 +84,26 @@ class ArtikelList extends Component
     }
 
     public function render()
-    {
-        $categories = Category::withCount('artikels')->get();
-        
-        $artikels = Artikel::approved()
-            ->when($this->search, function($query) {
-                $query->where('title', 'like', '%' . $this->search . '%')
-                      ->orWhere('content', 'like', '%' . $this->search . '%');
-            })
-            ->when($this->selectedCategory, function($query) {
-                $query->where('category_id', $this->selectedCategory);
-            })
-            ->with(['user', 'category'])
-            ->latest()
-            ->get();
+{
+    $categories = Category::withCount('artikels')->get();
+    
+    $artikels = Artikel::approved() // ← SUDAH FILTER APPROVED!
+        ->when($this->search, function($query) {
+            $query->where('title', 'like', '%' . $this->search . '%')
+                  ->orWhere('content', 'like', '%' . $this->search . '%');
+        })
+        ->when($this->selectedCategory, function($query) {
+            $query->where('category_id', $this->selectedCategory);
+        })
+        ->with(['user', 'category'])
+        ->latest()
+        ->get();
 
-        $currentCategory = $this->selectedCategory 
-            ? Category::find($this->selectedCategory) 
-            : null;
+    $currentCategory = $this->selectedCategory 
+        ? Category::find($this->selectedCategory) 
+        : null;
 
-        return view('livewire.user.artikel-list', compact('artikels', 'categories', 'currentCategory'));
+    return view('livewire.user.artikel-list', compact('artikels', 'categories', 'currentCategory'));
     }
+
 }

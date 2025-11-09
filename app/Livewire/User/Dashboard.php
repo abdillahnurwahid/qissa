@@ -14,14 +14,10 @@ use Livewire\Attributes\Title;
 #[Title('Dashboard - Qissa+')]
 class Dashboard extends Component
 {
-    public function filterByCategory($categoryId, $type = 'video')
+    public function filterByCategory($categoryId, $type = 'both')
     {
-        // Redirect ke halaman video/artikel dengan filter kategori
-        if ($type === 'video') {
-            return redirect()->route('user.video', ['category' => $categoryId]);
-        } else {
-            return redirect()->route('user.artikel', ['category' => $categoryId]);
-        }
+        // Redirect ke category page (tampil video + artikel)
+        return redirect()->route('user.category.show', $categoryId);
     }
 
     public function render()
@@ -34,7 +30,15 @@ class Dashboard extends Component
         ];
 
         $categories = Category::withCount(['videos', 'artikels'])->get();
+        
+        // Popular videos (top 6 most viewed)
+        $popularVideos = Video::approved()
+            ->orderBy('views', 'desc')
+            ->limit(6)
+            ->with('category')
+            ->get();
 
-        return view('livewire.user.dashboard', compact('stats', 'categories'));
+        return view('livewire.user.dashboard', compact('stats', 'categories', 'popularVideos'));
     }
 }
+

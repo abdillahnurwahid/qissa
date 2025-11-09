@@ -13,15 +13,30 @@ class ContentRequest extends Model
         'user_id',
         'title',
         'description',
+        'content',        
+        'video_url',    
+        'duration',     
+        'category_id',    
         'type',
         'priority',
         'votes',
         'status',
+        'created_content_id', 
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function createdArtikel()
+    {
+        return $this->belongsTo(Artikel::class, 'created_content_id');
     }
 
     public function scopePending($query)

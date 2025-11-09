@@ -41,6 +41,11 @@
                             <span class="inline-block px-2 py-1 text-xs rounded font-semibold {{ $request->priority === 'high' ? 'bg-red-100 text-red-600' : ($request->priority === 'medium' ? 'bg-yellow-100 text-yellow-600' : 'bg-green-100 text-green-600') }}">
                                 {{ $request->priority === 'high' ? '🔴 High' : ($request->priority === 'medium' ? '🟡 Medium' : '🟢 Low') }}
                             </span>
+                            @if($request->category)
+                                <span class="inline-block px-2 py-1 text-xs rounded bg-purple-100 text-purple-600">
+                                    {{ $request->category->name }}
+                                </span>
+                            @endif
                         </div>
 
                         <h3 class="font-bold text-[var(--burgundy)] text-lg mb-2">{{ $request->title }}</h3>
@@ -54,6 +59,17 @@
                             <span>📅 {{ $request->created_at->diffForHumans() }}</span>
                             <span class="font-semibold text-[var(--burgundy)]">⭐ {{ number_format($request->votes) }} votes</span>
                         </div>
+
+                        <!-- Link to Created Artikel (if approved & artikel created) -->
+                        @if($request->status === 'approved' && $request->type === 'artikel' && $request->created_content_id)
+                            <div class="mt-3">
+                                <a 
+                                    href="{{ route('user.artikel.show', $request->created_content_id) }}"
+                                    class="inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700 hover:underline">
+                                    📰 Lihat Artikel →
+                                </a>
+                            </div>
+                        @endif
                     </div>
 
                     @if($request->status === 'pending')
