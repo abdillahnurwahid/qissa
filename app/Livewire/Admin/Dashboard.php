@@ -2,16 +2,16 @@
 
 namespace App\Livewire\Admin;
 
+use Livewire\Component;
+use Livewire\Attributes\Layout;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Artikel;
 use App\Models\ContentRequest;
-use Livewire\Component;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 #[Layout('layouts.admin')]
-#[Title('Admin Dashboard - Qissa+')]
 class Dashboard extends Component
 {
     public function render()
@@ -23,6 +23,43 @@ class Dashboard extends Component
             'pending_requests' => ContentRequest::pending()->count(),
         ];
 
-        return view('livewire.admin.dashboard', compact('stats'));
+        // Data untuk Mixed Chart: User Engagement per Category
+        $categories = Category::all();
+        
+        $chartData = [
+            'labels' => [],
+            'views' => [],
+            'comments' => [],
+        ];
+
+        foreach ($categories as $category) {
+            $chartData['labels'][] = $category->name;
+            
+            // Total Views: Video + Artikel di kategori ini
+            $videoViews = Video::where('category_id', $category->id)
+                ->where('status', 'approved')
+                ->sum('views');
+            
+            $artikelViews = Artikel::where('category_id', $category->id)
+                ->where('status', 'approved')
+                ->sum('views');
+            
+            $chartData['views'][] = $videoViews + $artikelViews;
+            
+            // Total Comments: Video + Artikel di kategori ini
+            $videoComments = DB::table('comments')
+                ->whereIn('commentable_id', Video::where('category_id', $category->id)->pluck('id'))
+                ->where('commentable_type', 'App\Models\Video')
+                ->count();
+            
+            $artikelComments = DB::table('comments')
+                ->whereIn('commentable_id', Artikel::where('category_id', $category->id)->pluck('id'))
+                ->where('commentable_type', 'App\Models\Artikel')
+                ->count();
+            
+            $chartData['comments'][] = $videoComments + $artikelComments;
+        }
+
+        return view('livewire.admin.dashboard', compact('stats', 'chartData'));
     }
 }

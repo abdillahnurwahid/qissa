@@ -1,3 +1,5 @@
+{{-- user/dashboard.blade.php --}}
+
 <div>
     <!-- Welcome Banner -->
     <div class="bg-[var(--burgundy)] rounded-2xl p-8 text-white mb-6 shadow-lg">

@@ -1,3 +1,5 @@
+{{-- comment-section.blade.php --}}
+
 <div class="mt-8">
     <div class="flex justify-between items-center mb-6">
         <h3 class="text-xl font-bold text-[var(--burgundy)]">

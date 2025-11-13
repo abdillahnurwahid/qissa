@@ -1,3 +1,5 @@
+{{-- user/video-list.blade.php --}}
+
 <div>
     <!-- Breadcrumb & Title -->
     <div class="mb-6">
