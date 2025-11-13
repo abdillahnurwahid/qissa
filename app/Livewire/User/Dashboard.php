@@ -2,13 +2,13 @@
 
 namespace App\Livewire\User;
 
-use App\Models\Video;
 use App\Models\Artikel;
 use App\Models\Category;
 use App\Models\User;
-use Livewire\Component;
+use App\Models\Video;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Component;
 
 #[Layout('layouts.user')]
 #[Title('Dashboard - Qissa+')]
@@ -30,7 +30,7 @@ class Dashboard extends Component
         ];
 
         $categories = Category::withCount(['videos', 'artikels'])->get();
-        
+
         // Popular videos (top 6 most viewed)
         $popularVideos = Video::approved()
             ->orderBy('views', 'desc')
@@ -40,5 +40,38 @@ class Dashboard extends Component
 
         return view('livewire.user.dashboard', compact('stats', 'categories', 'popularVideos'));
     }
-}
 
+    public function toggleFavoriteVideo($videoId)
+    {
+        $video = Video::findOrFail($videoId);
+
+        if (auth()->user()->hasFavorited($video)) {
+            auth()->user()->favorites()
+                ->where('favoritable_type', Video::class)
+                ->where('favoritable_id', $videoId)
+                ->delete();
+        } else {
+            auth()->user()->favorites()->create([
+                'favoritable_type' => Video::class,
+                'favoritable_id' => $videoId,
+            ]);
+        }
+    }
+
+    public function toggleFavoriteArtikel($artikelId)
+    {
+        $artikel = Artikel::findOrFail($artikelId);
+
+        if (auth()->user()->hasFavorited($artikel)) {
+            auth()->user()->favorites()
+                ->where('favoritable_type', Artikel::class)
+                ->where('favoritable_id', $artikelId)
+                ->delete();
+        } else {
+            auth()->user()->favorites()->create([
+                'favoritable_type' => Artikel::class,
+                'favoritable_id' => $artikelId,
+            ]);
+        }
+    }
+}

@@ -22,7 +22,7 @@ class ArticleCreate extends Component
         return [
             'title' => 'required|min:10|max:255',
             'excerpt' => 'nullable|max:300',
-            'content' => 'required|min:100|max:50000',
+            'content' => 'required|min:100',
             'category_id' => 'required|exists:categories,id',
             'status' => 'required|in:pending,approved,rejected',
         ];
@@ -38,23 +38,45 @@ class ArticleCreate extends Component
 
     public function save()
     {
+        // Validate dulu
         $this->validate();
 
-        Artikel::create([
-            'category_id' => $this->category_id,
-            'user_id' => auth()->id(),
-            'title' => $this->title,
-            'slug' => Str::slug($this->title),
-            'excerpt' => $this->excerpt ?: Str::limit($this->content, 200),
-            'content' => $this->content,
-            'status' => $this->status,
-            'views' => 0,
-            'votes' => 0,
-        ]);
+        try {
+            // Generate slug unik
+            $slug = Str::slug($this->title);
+            $count = 1;
+            $originalSlug = $slug;
+            
+            while (Artikel::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
 
-        session()->flash('success', 'Artikel berhasil ditambahkan!');
-        
-        return redirect()->route('admin.articles');
+            // Create artikel
+            $artikel = Artikel::create([
+                'category_id' => $this->category_id,
+                'user_id' => auth()->id(),
+                'title' => $this->title,
+                'slug' => $slug,
+                'excerpt' => $this->excerpt ?: Str::limit(strip_tags($this->content), 200),
+                'content' => $this->content,
+                'status' => $this->status,
+                'views' => 0,
+                'votes' => 0,
+            ]);
+
+            session()->flash('success', '✅ Artikel "' . $artikel->title . '" berhasil ditambahkan!');
+            
+            return redirect()->route('admin.articles');
+
+        } catch (\Exception $e) {
+            session()->flash('error', '❌ Terjadi error: ' . $e->getMessage());
+            \Log::error('Article Create Error', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+        }
     }
 
     public function render()

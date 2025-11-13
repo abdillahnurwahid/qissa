@@ -90,12 +90,13 @@ Semua ({{ \App\Models\Video::approved()->count() }})
                     </div>
                     
                     <div class="flex gap-2">
-                        <button 
-                            wire:click="watchVideo({{ $video->id }})"
-                            class="btn-main px-4 py-2 rounded-md text-sm flex-1 hover:shadow-lg transition">
-                            ▶️ Tonton
-                        </button>
-                        <button 
+<a 
+    href="{{ $video->video_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn-main px-4 py-2 rounded-md text-sm flex-1 text-center inline-block">
+    ▶️ Tonton
+</a>                        <button 
                             wire:click="toggleFavorite({{ $video->id }})"
                             class="px-4 py-2 rounded-md text-sm border-2 transition {{ auth()->user()->hasFavorited($video) ? 'border-red-500 text-red-500 bg-red-50' : 'border-gray-300 text-gray-600 hover:border-red-300' }}">
                             {{ auth()->user()->hasFavorited($video) ? '❤️' : '🤍' }}
