@@ -51,12 +51,13 @@
                             <span>👁️ {{ number_format($video->views) }} views</span>
                         </div>
                         <div class="flex gap-2">
-                            <button 
-                                wire:click="watchVideo({{ $video->id }})"
-                                class="btn-main px-4 py-2 rounded-md text-sm flex-1">
-                                ▶️ Tonton
-                            </button>
-                            <button 
+<a 
+    href="{{ $video->video_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn-main px-4 py-2 rounded-md text-sm flex-1 text-center inline-block">
+    ▶️ Tonton
+</a>                            <button 
                                 wire:click="toggleFavoriteVideo({{ $video->id }})"
                                 class="px-4 py-2 rounded-md text-sm border-2 {{ auth()->user()->hasFavorited($video) ? 'border-red-500 text-red-500' : 'border-gray-300 text-gray-600' }}">
                                 {{ auth()->user()->hasFavorited($video) ? '❤️' : '🤍' }}

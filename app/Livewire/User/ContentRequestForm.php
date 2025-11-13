@@ -55,35 +55,34 @@ class ContentRequestForm extends Component
         'category_id.required' => 'Kategori wajib dipilih.',
     ];
 
-    public function submit()
-    {
-        $this->validate();
+public function submit()
+{
+    $this->validate();
 
-        $data = [
-            'user_id' => auth()->id(),
-            'title' => $this->title,
-            'description' => $this->description,
-            'category_id' => $this->category_id,
-            'type' => $this->type,
-            'priority' => $this->priority,
-            'votes' => 1,
-            'status' => 'pending',
-        ];
+    $data = [
+        'user_id' => auth()->id(),
+        'title' => $this->title,
+        'description' => $this->description,
+        'category_id' => $this->category_id,
+        'type' => $this->type,
+        'priority' => $this->priority,
+        'votes' => 1,
+        'status' => 'pending',
+    ];
 
-        if ($this->type === 'artikel') {
-            $data['content'] = $this->content;
-        } else {
-            $data['video_url'] = $this->video_url;
-            $data['duration'] = $this->duration;
-        }
-
-        ContentRequest::create($data);
-
-        session()->flash('success', 'Request berhasil dikirim! Admin akan review segera.');
-
-        $this->reset(['title', 'description', 'content', 'video_url', 'duration', 'category_id', 'type', 'priority']);
+    if ($this->type === 'artikel') {
+        $data['content'] = $this->content;
+    } else {
+        $data['video_url'] = $this->video_url;
+        $data['duration'] = $this->duration;
     }
 
+    ContentRequest::create($data);
+
+    session()->flash('success', '🎉 Request berhasil dikirim! Admin akan review segera.');
+
+    return redirect()->route('user.request.list'); 
+}
     public function render()
     {
         $categories = Category::all();

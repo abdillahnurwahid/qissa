@@ -1,16 +1,22 @@
 <div>
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-[var(--burgundy)]">Manajemen Video</h2>
-        
+<div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-[var(--burgundy)]">Manajemen Video</h2>
+    
+    <div class="flex gap-3">
         <select wire:model.live="statusFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--burgundy)]">
             <option value="all">Semua Status</option>
             <option value="pending">Pending</option>
             <option value="approved">Approved</option>
             <option value="rejected">Rejected</option>
         </select>
+        
+        <a href="{{ route('admin.videos.create') }}" class="btn-main px-4 py-2 rounded-lg font-semibold">
+            + Tambah Video
+        </a>
     </div>
+</div>
 
-    @if (session()->has('success'))
+@if (session()->has('success'))
         <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-4">
             {{ session('success') }}
         </div>
