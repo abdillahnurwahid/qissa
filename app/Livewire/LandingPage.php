@@ -32,6 +32,6 @@ class LandingPage extends Component
         ];
 
         return view('livewire.landing-page', compact('popularVideos', 'popularArtikels', 'categories', 'stats'))
-            ->layout('layouts.app');  // ← Pakai layout app yang sudah ada!
+            ->layout('layouts.app'); 
     }
 }

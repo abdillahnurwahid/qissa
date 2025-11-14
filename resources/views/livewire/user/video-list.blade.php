@@ -1,7 +1,4 @@
-{{-- user/video-list.blade.php --}}
-
 <div>
-    <!-- Breadcrumb & Title -->
     <div class="mb-6">
         <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
             <a href="{{ route('user.dashboard') }}" class="hover:text-[var(--burgundy)]">Home</a>
@@ -27,7 +24,6 @@
                 @endif
             </div>
             
-            <!-- Search -->
             <input 
                 type="text" 
                 wire:model.live="search"
@@ -36,7 +32,6 @@
         </div>
     </div>
 
-    <!-- Category Filter -->
     <div class="mb-6 bg-white rounded-lg shadow p-4">
         <div class="flex items-center gap-2 mb-3">
             <span class="text-sm font-semibold text-gray-700">Filter Kategori:</span>
@@ -53,7 +48,7 @@
             <button 
                 wire:click="clearFilter"
                 class="px-4 py-2 rounded-lg text-sm font-semibold transition {{ !$selectedCategory ? 'bg-[var(--burgundy)] text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-Semua ({{ \App\Models\Video::approved()->count() }})
+                Semua ({{ \App\Models\Video::approved()->count() }})
             </button>
             
             @foreach($categories as $category)
@@ -66,7 +61,6 @@ Semua ({{ \App\Models\Video::approved()->count() }})
         </div>
     </div>
 
-    <!-- Video Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         @forelse($videos as $video)
             <div class="bg-white shadow rounded-lg overflow-hidden hover:shadow-xl transition">
@@ -90,13 +84,14 @@ Semua ({{ \App\Models\Video::approved()->count() }})
                     </div>
                     
                     <div class="flex gap-2">
-<a 
-    href="{{ $video->video_url }}"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="btn-main px-4 py-2 rounded-md text-sm flex-1 text-center inline-block">
-    ▶️ Tonton
-</a>                        <button 
+                        <a 
+                            href="{{ $video->video_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-main px-4 py-2 rounded-md text-sm flex-1 text-center inline-block">
+                            ▶️ Tonton
+                        </a>                        
+                        <button 
                             wire:click="toggleFavorite({{ $video->id }})"
                             class="px-4 py-2 rounded-md text-sm border-2 transition {{ auth()->user()->hasFavorited($video) ? 'border-red-500 text-red-500 bg-red-50' : 'border-gray-300 text-gray-600 hover:border-red-300' }}">
                             {{ auth()->user()->hasFavorited($video) ? '❤️' : '🤍' }}

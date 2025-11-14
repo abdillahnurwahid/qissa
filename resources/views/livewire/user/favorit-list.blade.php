@@ -6,7 +6,6 @@
             <div class="bg-white p-6 rounded-lg shadow">
                 <div class="flex justify-between items-start">
                     <div class="flex-1">
-                        <!-- Badge Type -->
                         <span class="inline-block px-2 py-1 text-xs font-semibold rounded {{ $favorite->favoritable_type === 'App\Models\Video' ? 'bg-blue-100 text-blue-600' : 'bg-green-100 text-green-600' }} mb-2">
                             {{ $favorite->favoritable_type === 'App\Models\Video' ? 'Video' : 'Artikel' }}
                         </span>

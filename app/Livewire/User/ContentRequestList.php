@@ -17,8 +17,6 @@ class ContentRequestList extends Component
     {
         $request = ContentRequest::findOrFail($requestId);
         
-        // Check if user already voted (simple check for now)
-        // Nanti bisa diperbaiki dengan pivot table
         $request->incrementVotes();
 
         session()->flash('success', 'Vote berhasil! Terima kasih atas dukungannya.');

@@ -33,7 +33,6 @@ class Login extends Component
         if (auth()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             session()->regenerate();
 
-            // Redirect based on role
             if (auth()->user()->isAdmin()) {
                 return redirect()->intended(route('admin.dashboard'));
             }

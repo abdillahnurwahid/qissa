@@ -9,7 +9,6 @@
     <div class="bg-white rounded-lg shadow-lg p-6">
         <form wire:submit="save" class="space-y-5">
             
-            <!-- Title -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Judul Video <span class="text-red-500">*</span>
@@ -24,7 +23,6 @@
                 @enderror
             </div>
 
-            <!-- Category -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Kategori <span class="text-red-500">*</span>
@@ -42,7 +40,6 @@
                 @enderror
             </div>
 
-            <!-- YouTube URL -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Link YouTube <span class="text-red-500">*</span>
@@ -58,7 +55,6 @@
                 @enderror
             </div>
 
-            <!-- Duration -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Durasi (Menit) <span class="text-red-500">*</span>
@@ -76,7 +72,6 @@
                 @enderror
             </div>
 
-            <!-- Description -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Deskripsi
@@ -88,7 +83,6 @@
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--burgundy)]"></textarea>
             </div>
 
-            <!-- Status -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Status <span class="text-red-500">*</span>
@@ -102,7 +96,6 @@
                 </select>
             </div>
 
-            <!-- Submit Buttons -->
             <div class="flex gap-3 pt-4">
                 <button 
                     type="submit"

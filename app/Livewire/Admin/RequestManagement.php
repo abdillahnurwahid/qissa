@@ -42,11 +42,9 @@ class RequestManagement extends Component
             session()->flash('success', "Request disetujui! Artikel '{$artikel->title}' berhasil dibuat.");
             
         } elseif ($request->type === 'video' && !empty($request->video_url)) {
-            // Extract YouTube ID
             $videoId = YouTubeHelper::extractVideoId($request->video_url);
             
             if ($videoId) {
-                // Create Video
                 $video = Video::create([
                     'category_id' => $request->category_id ?? 1,
                     'title' => $request->title,

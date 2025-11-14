@@ -14,9 +14,6 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ============================================
-        // 1. CREATE USERS
-        // ============================================
         $admin = User::create([
             'name' => 'Ahmad Dahlan',
             'email' => 'admin@qissa.com',
@@ -42,9 +39,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // ============================================
-        // 2. CREATE CATEGORIES
-        // ============================================
         $categories = [
             ['name' => 'Sirah Nabawiyah', 'description' => 'Kisah perjalanan hidup Nabi Muhammad SAW dari lahir hingga wafat'],
             ['name' => 'Kisah Para Nabi', 'description' => 'Cerita inspiratif dari 25 nabi dan rasul yang wajib diimani'],
@@ -59,11 +53,7 @@ class DatabaseSeeder extends Seeder
             Category::create($cat);
         }
 
-        // ============================================
-        // 3. CREATE VIDEOS
-        // ============================================
         $videos = [
-            // Sirah Nabawiyah
             [
                 'category_id' => 1,
                 'title' => 'Kelahiran Nabi Muhammad SAW: Tahun Gajah yang Penuh Mukjizat',
@@ -91,8 +81,6 @@ class DatabaseSeeder extends Seeder
                 'status' => 'approved',
                 'views' => 31200,
             ],
-            
-            // Kisah Para Nabi
             [
                 'category_id' => 2,
                 'title' => 'Nabi Ibrahim: Dibakar Hidup-hidup oleh Rakyatnya',
@@ -120,8 +108,6 @@ class DatabaseSeeder extends Seeder
                 'status' => 'approved',
                 'views' => 35800,
             ],
-
-            // Khulafaur Rasyidin
             [
                 'category_id' => 3,
                 'title' => 'Abu Bakar As-Siddiq: Orang Pertama yang Membenarkan Isra Mi\'raj',
@@ -140,8 +126,6 @@ class DatabaseSeeder extends Seeder
                 'status' => 'approved',
                 'views' => 33600,
             ],
-
-            // Keemasan Islam
             [
                 'category_id' => 5,
                 'title' => 'Muhammad Al-Fatih: Pemuda 21 Tahun Penakluk Konstantinopel',
@@ -160,8 +144,6 @@ class DatabaseSeeder extends Seeder
                 'status' => 'approved',
                 'views' => 47850,
             ],
-
-            // Akhir Zaman
             [
                 'category_id' => 7,
                 'title' => 'Tanda-Tanda Kiamat Kecil yang Sudah Terjadi',
@@ -177,9 +159,6 @@ class DatabaseSeeder extends Seeder
             Video::create($video);
         }
 
-        // ============================================
-        // 4. CREATE ARTIKELS
-        // ============================================
         $artikels = [
             [
                 'category_id' => 1,
@@ -257,9 +236,6 @@ class DatabaseSeeder extends Seeder
             Artikel::create($artikel);
         }
 
-        // ============================================
-        // 5. CREATE CONTENT REQUESTS
-        // ============================================
         $requests = [
             [
                 'user_id' => $createdUsers[2]->id,
@@ -297,9 +273,6 @@ class DatabaseSeeder extends Seeder
             ContentRequest::create($request);
         }
 
-        // ============================================
-        // 6. CREATE FAVORITES
-        // ============================================
         $createdUsers[0]->favorites()->create([
             'favoritable_type' => Video::class,
             'favoritable_id' => 1,
@@ -320,9 +293,6 @@ class DatabaseSeeder extends Seeder
             'favoritable_id' => 5,
         ]);
 
-        // ============================================
-        // SUCCESS MESSAGE
-        // ============================================
         echo "\n✅ Database seeded successfully!\n";
         echo "========================================\n";
         echo "👤 Admin Account:\n";

@@ -13,7 +13,7 @@ use Livewire\Attributes\Title;
 class CategoryShow extends Component
 {
     public Category $category;
-    public $activeTab = 'videos'; // videos or artikels
+    public $activeTab = 'videos'; 
 
     public function mount($id)
     {

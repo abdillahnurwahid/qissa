@@ -43,11 +43,9 @@ class ArticleCreate extends Component
 
     public function save()
     {
-        // Validate dulu
         $this->validate();
 
         try {
-            // Generate slug unik
             $slug = Str::slug($this->title);
             $count = 1;
             $originalSlug = $slug;
@@ -57,7 +55,6 @@ class ArticleCreate extends Component
                 $count++;
             }
 
-            // Create artikel
             $artikel = Artikel::create([
                 'category_id' => $this->category_id,
                 'user_id' => auth()->id(),

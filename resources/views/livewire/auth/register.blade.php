@@ -3,7 +3,6 @@
         <div class="brand-gradient rounded-2xl p-[2px] shadow-xl">
             <div class="bg-white rounded-2xl p-8">
                 
-                <!-- Logo & Header -->
                 <div class="text-center mb-6">
                     <div class="inline-block bg-[var(--mint)] p-3 rounded-2xl shadow mb-3">
                         <div class="w-12 h-12 bg-[var(--burgundy)] rounded-xl flex items-center justify-center">
@@ -17,7 +16,6 @@
                 <h2 class="text-xl font-bold text-[var(--burgundy)] mb-4 text-center">Daftar Akun Baru</h2>
 
                 <form wire:submit="register" class="space-y-4">
-                    <!-- Name -->
                     <div>
                         <label class="block text-xs font-medium text-gray-700 mb-1">Nama Lengkap</label>
                         <input 
@@ -30,7 +28,6 @@
                         @enderror
                     </div>
 
-                    <!-- Email -->
                     <div>
                         <label class="block text-xs font-medium text-gray-700 mb-1">Email</label>
                         <input 
@@ -43,7 +40,6 @@
                         @enderror
                     </div>
 
-                    <!-- Password -->
                     <div>
                         <label class="block text-xs font-medium text-gray-700 mb-1">Password</label>
                         <input 
@@ -56,7 +52,6 @@
                         @enderror
                     </div>
 
-                    <!-- Password Confirmation -->
                     <div>
                         <label class="block text-xs font-medium text-gray-700 mb-1">Konfirmasi Password</label>
                         <input 
@@ -66,7 +61,6 @@
                             placeholder="konfirmasi password">
                     </div>
 
-                    <!-- Submit Button -->
                     <button 
                         type="submit"
                         class="w-full btn-main py-2 rounded-lg text-sm font-semibold shadow-md hover:shadow-lg transition-all"
@@ -76,7 +70,6 @@
                     </button>
                 </form>
 
-                <!-- Login Link -->
                 <div class="mt-4 text-center">
                     <a href="{{ route('login') }}" class="text-sm text-gray-600">
                         Sudah punya akun?

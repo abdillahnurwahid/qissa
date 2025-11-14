@@ -18,8 +18,8 @@ class ContentRequestForm extends Component
     public $title = '';
     public $description = '';
     public $content = '';
-    public $video_url = '';     // NEW
-    public $duration = '';      // NEW
+    public $video_url = '';    
+    public $duration = '';     
     public $category_id = '';
     public $type = 'video';
     public $priority = 'medium';
@@ -37,9 +37,8 @@ class ContentRequestForm extends Component
         if ($this->type === 'artikel') {
             $rules['content'] = 'required|min:100|max:50000';
         } else {
-            // Video rules
             $rules['video_url'] = 'required|url';
-            $rules['duration'] = 'required|integer|min:1|max:300'; // 1-300 minutes
+            $rules['duration'] = 'required|integer|min:1|max:300'; 
         }
 
         return $rules;

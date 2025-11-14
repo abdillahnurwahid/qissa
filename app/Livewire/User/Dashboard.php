@@ -16,7 +16,6 @@ class Dashboard extends Component
 {
     public function filterByCategory($categoryId, $type = 'both')
     {
-        // Redirect ke category page (tampil video + artikel)
         return redirect()->route('user.category.show', $categoryId);
     }
 
@@ -31,7 +30,6 @@ class Dashboard extends Component
 
         $categories = Category::withCount(['videos', 'artikels'])->get();
 
-        // Popular videos (top 6 most viewed)
         $popularVideos = Video::approved()
             ->orderBy('views', 'desc')
             ->limit(6)

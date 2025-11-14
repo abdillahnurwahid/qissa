@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::table('content_requests', function (Blueprint $table) {
             $table->string('video_url')->nullable()->after('content');
-            $table->integer('duration')->nullable()->after('video_url'); // in minutes
+            $table->integer('duration')->nullable()->after('video_url'); 
         });
     }
 

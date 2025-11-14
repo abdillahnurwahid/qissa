@@ -6,7 +6,6 @@
         </a>
     </div>
 
-    <!-- Success/Error Message -->
     @if (session()->has('success'))
         <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
             {{ session('success') }}
@@ -19,7 +18,6 @@
         </div>
     @endif
 
-    <!-- Validation Errors Summary (Tambah ini!) -->
     @if ($errors->any())
         <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
             <strong>❌ Ada {{ $errors->count() }} kesalahan:</strong>
@@ -34,7 +32,6 @@
     <div class="bg-white rounded-lg shadow-lg p-6">
         <form wire:submit.prevent="save" class="space-y-5">
             
-            <!-- Title -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Judul Artikel <span class="text-red-500">*</span>
@@ -49,7 +46,6 @@
                 @enderror
             </div>
 
-            <!-- Category -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Kategori <span class="text-red-500">*</span>
@@ -67,7 +63,6 @@
                 @enderror
             </div>
 
-            <!-- Excerpt -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Ringkasan/Excerpt (Opsional)
@@ -91,7 +86,6 @@
                 </div>
             </div>
 
-            <!-- Content -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Konten Artikel <span class="text-red-500">*</span>
@@ -114,7 +108,6 @@
                 </div>
             </div>
 
-            <!-- Status -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Status <span class="text-red-500">*</span>
@@ -128,7 +121,6 @@
                 </select>
             </div>
 
-            <!-- Submit Buttons -->
             <div class="flex gap-3 pt-4">
                 <button 
                     type="submit"

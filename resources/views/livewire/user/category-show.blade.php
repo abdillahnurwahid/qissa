@@ -1,13 +1,10 @@
-{{-- user/category-show.blade.php --}}
 <div>
-    <!-- Breadcrumb -->
     <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
         <a href="{{ route('user.dashboard') }}" class="hover:text-[var(--burgundy)]">Home</a>
         <span>›</span>
         <span class="text-[var(--burgundy)] font-semibold">{{ $category->name }}</span>
     </div>
 
-    <!-- Header -->
     <div class="bg-[var(--burgundy)] rounded-2xl p-8 text-white mb-6 shadow-lg">
         <h1 class="text-3xl font-bold mb-2">{{ $category->name }}</h1>
         @if($category->description)
@@ -15,7 +12,6 @@
         @endif
     </div>
 
-    <!-- Tabs -->
     <div class="bg-white rounded-lg shadow mb-6">
         <div class="flex border-b">
             <button 
@@ -31,9 +27,7 @@
         </div>
     </div>
 
-    <!-- Content -->
     @if($activeTab === 'videos')
-        <!-- Videos Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @forelse($category->videos as $video)
                 <div class="bg-white shadow rounded-lg overflow-hidden hover:shadow-xl transition">
@@ -51,13 +45,14 @@
                             <span>👁️ {{ number_format($video->views) }} views</span>
                         </div>
                         <div class="flex gap-2">
-<a 
-    href="{{ $video->video_url }}"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="btn-main px-4 py-2 rounded-md text-sm flex-1 text-center inline-block">
-    ▶️ Tonton
-</a>                            <button 
+                        <a 
+                            href="{{ $video->video_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-main px-4 py-2 rounded-md text-sm flex-1 text-center inline-block">
+                            ▶️ Tonton
+                        </a>                            
+                        <button 
                                 wire:click="toggleFavoriteVideo({{ $video->id }})"
                                 class="px-4 py-2 rounded-md text-sm border-2 {{ auth()->user()->hasFavorited($video) ? 'border-red-500 text-red-500' : 'border-gray-300 text-gray-600' }}">
                                 {{ auth()->user()->hasFavorited($video) ? '❤️' : '🤍' }}
@@ -73,7 +68,6 @@
             @endforelse
         </div>
     @else
-        <!-- Artikels List -->
         <div class="space-y-4">
             @forelse($category->artikels as $artikel)
                 <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">

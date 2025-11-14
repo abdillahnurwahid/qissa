@@ -1,11 +1,9 @@
 <div>
-    <!-- Welcome Banner -->
     <div class="bg-[var(--burgundy)] rounded-2xl p-8 text-white mb-6 shadow-lg">
         <h1 class="text-3xl font-bold mb-2">Selamat Datang, {{ auth()->user()->name }}! 👋</h1>
         <p class="text-white text-opacity-90">Jelajahi konten terbaru dan populer hari ini</p>
     </div>
 
-    <!-- Stats Cards -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         <div class="bg-white rounded-xl p-4 text-center shadow hover:shadow-lg transition">
             <div class="text-2xl font-bold text-[var(--burgundy)]">{{ number_format($stats['total_videos']) }}</div>
@@ -25,7 +23,6 @@
         </div>
     </div>
 
-    <!-- Popular Categories -->
     <div class="mb-10">
         <h3 class="text-lg font-bold text-[var(--burgundy)] mb-4">📚 Kategori Populer</h3>
         
@@ -47,7 +44,6 @@
         </div>
     </div>
 
-    <!-- Popular Videos Section (YouTube Style) -->
     <div class="mb-10">
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-xl font-bold text-[var(--burgundy)]">📹 Video Terpopuler</h3>
@@ -98,7 +94,6 @@
         </div>
     </div>
 
-    <!-- Popular Articles Section -->
     <div>
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-xl font-bold text-[var(--burgundy)]">📝 Artikel Terbaru</h3>

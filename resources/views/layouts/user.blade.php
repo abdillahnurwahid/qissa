@@ -28,15 +28,12 @@
 </head>
 <body class="bg-[var(--mint)]">
 
-    <!-- Header -->
     @include('layouts.partials.user-header')
 
-    <!-- Main Content -->
     <div class="max-w-6xl mx-auto px-6 py-12 transition-all duration-300">
         {{ $slot }}
     </div>
 
-    <!-- Footer -->
     @include('layouts.partials.footer')
 
     @livewireScripts

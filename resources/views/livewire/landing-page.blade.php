@@ -1,5 +1,4 @@
 <div>
-    <!-- Navbar untuk Guest -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
@@ -20,7 +19,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <div class="brand-gradient text-white py-20">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h1 class="text-5xl font-bold mb-4">Belajar Sejarah Islam</h1>
@@ -49,7 +47,6 @@
         </div>
     </div>
 
-    <!-- Categories Section -->
     <div class="max-w-7xl mx-auto px-6 py-16">
         <h2 class="text-3xl font-bold text-[var(--burgundy)] mb-8 text-center">Kategori Populer</h2>
         
@@ -66,7 +63,6 @@
         </div>
     </div>
 
-    <!-- Popular Videos Section -->
     <div class="max-w-7xl mx-auto px-6 py-12">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-3xl font-bold text-[var(--burgundy)]">📹 Video Terpopuler</h2>
@@ -103,7 +99,6 @@
         </div>
     </div>
 
-    <!-- Popular Articles Section -->
     <div class="bg-white py-12">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center mb-8">
@@ -134,7 +129,6 @@
         </div>
     </div>
 
-    <!-- CTA Section -->
     <div class="brand-gradient text-white py-20">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold mb-4">Siap Memulai Perjalanan Belajar?</h2>
@@ -152,7 +146,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="bg-gray-900 text-white py-8">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="flex items-center justify-center gap-2 mb-4">

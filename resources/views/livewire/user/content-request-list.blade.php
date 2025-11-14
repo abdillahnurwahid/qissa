@@ -1,5 +1,3 @@
-{{-- user/content-request-list.blade.php --}}
-
 <div>
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-[var(--burgundy)]">Daftar Request Konten</h2>
@@ -62,7 +60,6 @@
                             <span class="font-semibold text-[var(--burgundy)]">⭐ {{ number_format($request->votes) }} votes</span>
                         </div>
 
-                        <!-- Link to Created Artikel (if approved & artikel created) -->
                         @if($request->status === 'approved' && $request->type === 'artikel' && $request->created_content_id)
                             <div class="mt-3">
                                 <a 

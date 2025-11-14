@@ -50,7 +50,6 @@ class User extends Authenticatable
         return $this->hasMany(ContentRequest::class);
     }
 
-    // Check if user has favorited something
     public function hasFavorited($favoritable): bool
     {
         return $this->favorites()

@@ -37,10 +37,8 @@ class ArtikelList extends Component
     {
         $artikel = Artikel::findOrFail($artikelId);
         
-        // Anti-spam view tracking
         $this->trackView($artikel, 'artikel');
         
-        // Redirect ke detail artikel
         return redirect()->route('user.artikel.show', $artikel->id);
     }
 
@@ -87,7 +85,7 @@ class ArtikelList extends Component
 {
     $categories = Category::withCount('artikels')->get();
     
-    $artikels = Artikel::approved() // ← SUDAH FILTER APPROVED!
+    $artikels = Artikel::approved() 
         ->when($this->search, function($query) {
             $query->where('title', 'like', '%' . $this->search . '%')
                   ->orWhere('content', 'like', '%' . $this->search . '%');

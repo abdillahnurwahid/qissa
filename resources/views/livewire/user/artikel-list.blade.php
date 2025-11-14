@@ -1,7 +1,4 @@
-{{-- user/artikel-list.blade.php --}}
-
 <div>
-    <!-- Breadcrumb & Title -->
     <div class="mb-6">
         <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
             <a href="{{ route('user.dashboard') }}" class="hover:text-[var(--burgundy)]">Home</a>
@@ -27,7 +24,6 @@
                 @endif
             </div>
             
-            <!-- Search -->
             <input 
                 type="text" 
                 wire:model.live="search"
@@ -36,7 +32,6 @@
         </div>
     </div>
 
-    <!-- Category Filter -->
     <div class="mb-6 bg-white rounded-lg shadow p-4">
         <div class="flex items-center gap-2 mb-3">
             <span class="text-sm font-semibold text-gray-700">Filter Kategori:</span>
@@ -66,7 +61,6 @@
         </div>
     </div>
 
-    <!-- Artikel List -->
     <div class="space-y-4">
         @forelse($artikels as $artikel)
             <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">

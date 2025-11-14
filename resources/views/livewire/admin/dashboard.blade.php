@@ -7,7 +7,6 @@
         </div>
     @endif
 
-    <!-- Stats Cards -->
     <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         <div class="bg-white rounded-xl p-4 text-center shadow hover:shadow-lg transition">
             <div class="text-2xl font-bold text-[var(--burgundy)]">{{ number_format($stats['total_users']) }}</div>
@@ -27,7 +26,6 @@
         </div>
     </div>
 
-    <!-- User Engagement Chart -->
     <div class="bg-white rounded-xl p-6 shadow-lg mb-10">
         <div class="flex justify-between items-center mb-6">
             <div>
@@ -51,7 +49,6 @@
         </div>
     </div>
 
-    <!-- Quick Actions -->
     <div class="bg-white rounded-xl p-6 shadow">
         <h3 class="font-bold text-[var(--burgundy)] mb-4">Quick Actions</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -62,7 +59,6 @@
         </div>
     </div>
 
-    <!-- Chart.js Script -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

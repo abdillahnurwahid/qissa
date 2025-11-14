@@ -1,5 +1,3 @@
-{{-- user/content-request-form.blade.php --}}
-
 <div>
     <h2 class="text-2xl font-bold text-[var(--burgundy)] mb-6">Request Konten Baru</h2>
 
@@ -23,7 +21,6 @@
     <div class="bg-white rounded-lg shadow-lg p-6">
         <form wire:submit="submit" class="space-y-4">
             
-            <!-- Type Selection -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Tipe Konten <span class="text-red-500">*</span>
@@ -44,7 +41,6 @@
                 </div>
             </div>
 
-            <!-- Category -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Kategori <span class="text-red-500">*</span>
@@ -62,7 +58,6 @@
                 @enderror
             </div>
 
-            <!-- Title -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Judul <span class="text-red-500">*</span>
@@ -77,7 +72,6 @@
                 @enderror
             </div>
 
-            <!-- Description -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Deskripsi Singkat (Opsional)
@@ -89,12 +83,10 @@
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--burgundy)]"></textarea>
             </div>
 
-            <!-- VIDEO FIELDS -->
             @if($type === 'video')
                 <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 space-y-4">
                     <h4 class="font-bold text-blue-800">📹 Informasi Video</h4>
                     
-                    <!-- YouTube URL -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             Link YouTube <span class="text-red-500">*</span>
@@ -110,7 +102,6 @@
                         @enderror
                     </div>
 
-                    <!-- Duration -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             Durasi (Menit) <span class="text-red-500">*</span>
@@ -130,7 +121,6 @@
                 </div>
             @endif
 
-            <!-- ARTIKEL FIELDS -->
             @if($type === 'artikel')
                 <div class="bg-green-50 border-2 border-green-200 rounded-lg p-4">
                     <h4 class="font-bold text-green-800 mb-3">📝 Konten Artikel</h4>
@@ -154,7 +144,6 @@
                 </div>
             @endif
 
-            <!-- Priority -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Prioritas <span class="text-red-500">*</span>
@@ -168,7 +157,6 @@
                 </select>
             </div>
 
-            <!-- Submit -->
             <div class="flex gap-3">
                 <button 
                     type="submit"

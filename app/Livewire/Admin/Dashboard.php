@@ -23,7 +23,6 @@ class Dashboard extends Component
             'pending_requests' => ContentRequest::pending()->count(),
         ];
 
-        // Data untuk Mixed Chart: User Engagement per Category
         $categories = Category::all();
         
         $chartData = [
@@ -35,7 +34,6 @@ class Dashboard extends Component
         foreach ($categories as $category) {
             $chartData['labels'][] = $category->name;
             
-            // Total Views: Video + Artikel di kategori ini
             $videoViews = Video::where('category_id', $category->id)
                 ->where('status', 'approved')
                 ->sum('views');
@@ -46,7 +44,6 @@ class Dashboard extends Component
             
             $chartData['views'][] = $videoViews + $artikelViews;
             
-            // Total Comments: Video + Artikel di kategori ini
             $videoComments = DB::table('comments')
                 ->whereIn('commentable_id', Video::where('category_id', $category->id)->pluck('id'))
                 ->where('commentable_type', 'App\Models\Video')
