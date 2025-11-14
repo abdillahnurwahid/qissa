@@ -19,6 +19,18 @@
         </div>
     @endif
 
+    <!-- Validation Errors Summary (Tambah ini!) -->
+    @if ($errors->any())
+        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+            <strong>❌ Ada {{ $errors->count() }} kesalahan:</strong>
+            <ul class="mt-2 list-disc list-inside text-sm">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="bg-white rounded-lg shadow-lg p-6">
         <form wire:submit.prevent="save" class="space-y-5">
             
@@ -64,8 +76,19 @@
                     wire:model="excerpt"
                     rows="3"
                     placeholder="Ringkasan singkat artikel (akan auto-generate dari konten jika dikosongkan)"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--burgundy)]"></textarea>
-                <p class="text-xs text-gray-500 mt-1">Maksimal 300 karakter. Kosongkan untuk auto-generate.</p>
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--burgundy)] @error('excerpt') border-red-500 @enderror"></textarea>
+                
+                <div class="flex justify-between items-center mt-1">
+                    @error('excerpt') 
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @else
+                        <span class="text-xs text-gray-500">Maksimal 300 karakter. Kosongkan untuk auto-generate.</span>
+                    @enderror
+                    
+                    <span class="text-xs {{ strlen($excerpt) > 300 ? 'text-red-600 font-semibold' : 'text-gray-500' }}">
+                        {{ strlen($excerpt) }}/300 karakter
+                    </span>
+                </div>
             </div>
 
             <!-- Content -->
@@ -130,15 +153,4 @@
             </div>
         </form>
     </div>
-
-    <!-- Debug Info (Hapus setelah selesai debug) -->
-    @if(config('app.debug'))
-        <div class="mt-4 bg-gray-100 p-4 rounded text-xs">
-            <strong>Debug Info:</strong>
-            <pre>Title: {{ $title }}</pre>
-            <pre>Category: {{ $category_id }}</pre>
-            <pre>Content Length: {{ strlen($content) }}</pre>
-            <pre>Status: {{ $status }}</pre>
-        </div>
-    @endif
 </div>

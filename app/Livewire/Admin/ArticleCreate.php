@@ -2,19 +2,23 @@
 
 namespace App\Livewire\Admin;
 
-use Livewire\Component;
-use Livewire\Attributes\Layout;
 use App\Models\Artikel;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.admin')]
 class ArticleCreate extends Component
 {
     public $title = '';
+
     public $excerpt = '';
+
     public $content = '';
+
     public $category_id = '';
+
     public $status = 'approved';
 
     protected function rules()
@@ -34,6 +38,7 @@ class ArticleCreate extends Component
         'content.required' => 'Konten artikel wajib diisi.',
         'content.min' => 'Konten minimal 100 karakter.',
         'category_id.required' => 'Kategori wajib dipilih.',
+        'excerpt.max' => 'Ringkasan maksimal 300 karakter.', 
     ];
 
     public function save()
@@ -46,9 +51,9 @@ class ArticleCreate extends Component
             $slug = Str::slug($this->title);
             $count = 1;
             $originalSlug = $slug;
-            
+
             while (Artikel::where('slug', $slug)->exists()) {
-                $slug = $originalSlug . '-' . $count;
+                $slug = $originalSlug.'-'.$count;
                 $count++;
             }
 
@@ -65,12 +70,12 @@ class ArticleCreate extends Component
                 'votes' => 0,
             ]);
 
-            session()->flash('success', '✅ Artikel "' . $artikel->title . '" berhasil ditambahkan!');
-            
+            session()->flash('success', '✅ Artikel "'.$artikel->title.'" berhasil ditambahkan!');
+
             return redirect()->route('admin.articles');
 
         } catch (\Exception $e) {
-            session()->flash('error', '❌ Terjadi error: ' . $e->getMessage());
+            session()->flash('error', '❌ Terjadi error: '.$e->getMessage());
             \Log::error('Article Create Error', [
                 'message' => $e->getMessage(),
                 'file' => $e->getFile(),
@@ -82,6 +87,7 @@ class ArticleCreate extends Component
     public function render()
     {
         $categories = Category::all();
+
         return view('livewire.admin.article-create', compact('categories'));
     }
 }
