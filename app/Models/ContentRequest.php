@@ -39,6 +39,11 @@ class ContentRequest extends Model
         return $this->belongsTo(Artikel::class, 'created_content_id');
     }
 
+    public function votedBy()
+    {
+        return $this->hasMany(ContentRequestVote::class);
+    }
+
     public function scopePending($query)
     {
         return $query->where('status', 'pending');
@@ -58,5 +63,15 @@ class ContentRequest extends Model
     public function incrementVotes()
     {
         $this->increment('votes');
+    }
+
+    public function decrementVotes()
+    {
+        $this->decrement('votes');
+    }
+
+    public function hasVotedBy($user)
+    {
+        return $this->votedBy()->where('user_id', $user->id)->exists();
     }
 }

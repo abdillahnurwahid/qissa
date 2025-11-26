@@ -1,3 +1,4 @@
+{{-- results/views/livewire/auth/login.blade.php --}}
 <div class="bg-[var(--mint)] min-h-screen flex items-center justify-center p-6">
     <div class="w-full max-w-md">
         <div class="brand-gradient rounded-2xl p-[2px] shadow-xl">
@@ -69,11 +70,11 @@
             </div>
         </div>
 
-        <div class="mt-4 bg-white rounded-lg p-4 shadow text-xs">
+        {{-- <div class="mt-4 bg-white rounded-lg p-4 shadow text-xs">
             <p class="font-bold text-gray-700 mb-2">Demo Credentials:</p>
             <p class="text-gray-600">User: <span class="font-mono bg-gray-100 px-2 py-1 rounded">user@qissa.com</span></p>
             <p class="text-gray-600">Admin: <span class="font-mono bg-gray-100 px-2 py-1 rounded">admin@qissa.com</span></p>
             <p class="text-gray-600">Password: <span class="font-mono bg-gray-100 px-2 py-1 rounded">password</span></p>
-        </div>
+        </div> --}}
     </div>
 </div>

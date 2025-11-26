@@ -1,3 +1,4 @@
+{{-- resources/views/livewire/admin/article-management.blade.php --}}
 <div>
 <div class="flex justify-between items-center mb-6">
     <h2 class="text-2xl font-bold text-[var(--burgundy)]">Manajemen Artikel</h2>

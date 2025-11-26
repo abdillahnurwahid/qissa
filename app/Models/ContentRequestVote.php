@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Favorite extends Model
+class ContentRequestVote extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'favoritable_id',
-        'favoritable_type',
+        'content_request_id',
     ];
 
     public function user()
@@ -20,8 +19,8 @@ class Favorite extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function favoritable()
+    public function contentRequest()
     {
-        return $this->morphTo();
+        return $this->belongsTo(ContentRequest::class);
     }
 }

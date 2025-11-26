@@ -1,3 +1,4 @@
+{{-- resources/views/livewire/user/dashboard.blade.php --}}
 <div>
     <div class="bg-[var(--burgundy)] rounded-2xl p-8 text-white mb-6 shadow-lg">
         <h1 class="text-3xl font-bold mb-2">Selamat Datang, {{ auth()->user()->name }}! 👋</h1>

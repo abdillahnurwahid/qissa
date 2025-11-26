@@ -1,3 +1,4 @@
+{{-- view resources/views/layouts/admin.blade.php --}}
 <!DOCTYPE html>
 <html lang="id">
 <head>

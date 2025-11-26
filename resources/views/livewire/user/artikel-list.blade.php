@@ -1,3 +1,4 @@
+{{-- resources/views/livewire/user/artikel-list.blade.php --}}
 <div>
     <div class="mb-6">
         <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">

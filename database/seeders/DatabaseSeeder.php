@@ -2,20 +2,20 @@
 
 namespace Database\Seeders;
 
+use App\Models\Artikel;
+use App\Models\Category;
+use App\Models\ContentRequest;
+use App\Models\User;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use App\Models\Category;
-use App\Models\Video;
-use App\Models\Artikel;
-use App\Models\ContentRequest;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
         $admin = User::create([
-            'name' => 'Ahmad Dahlan',
+            'name' => 'abdillah nurwahid',
             'email' => 'admin@qissa.com',
             'password' => Hash::make('password'),
             'role' => 'admin',
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 25,
                 'status' => 'approved',
-                'views' => 24350,
+                'views' => 0,
             ],
             [
                 'category_id' => 1,
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 45,
                 'status' => 'approved',
-                'views' => 38750,
+                'views' => 0,
             ],
             [
                 'category_id' => 1,
@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 35,
                 'status' => 'approved',
-                'views' => 31200,
+                'views' => 0,
             ],
             [
                 'category_id' => 2,
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 30,
                 'status' => 'approved',
-                'views' => 28450,
+                'views' => 0,
             ],
             [
                 'category_id' => 2,
@@ -97,7 +97,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 50,
                 'status' => 'approved',
-                'views' => 42100,
+                'views' => 0,
             ],
             [
                 'category_id' => 2,
@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 40,
                 'status' => 'approved',
-                'views' => 35800,
+                'views' => 0,
             ],
             [
                 'category_id' => 3,
@@ -115,7 +115,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 28,
                 'status' => 'approved',
-                'views' => 19450,
+                'views' => 0,
             ],
             [
                 'category_id' => 3,
@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 38,
                 'status' => 'approved',
-                'views' => 33600,
+                'views' => 0,
             ],
             [
                 'category_id' => 5,
@@ -133,7 +133,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 45,
                 'status' => 'approved',
-                'views' => 51200,
+                'views' => 0,
             ],
             [
                 'category_id' => 5,
@@ -142,7 +142,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 48,
                 'status' => 'approved',
-                'views' => 47850,
+                'views' => 0,
             ],
             [
                 'category_id' => 7,
@@ -151,7 +151,7 @@ class DatabaseSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 'duration' => 55,
                 'status' => 'approved',
-                'views' => 63400,
+                'views' => 0,
             ],
         ];
 
@@ -165,70 +165,176 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $createdUsers[0]->id,
                 'title' => 'Al-Amin: Julukan Nabi Muhammad SAW Sebelum Menjadi Rasul',
                 'excerpt' => 'Sebelum diangkat menjadi nabi, Muhammad SAW sudah dikenal sebagai Al-Amin (yang terpercaya) oleh seluruh masyarakat Makkah.',
-                'content' => "Sebelum menjadi nabi, Muhammad SAW sudah dikenal sebagai Al-Amin (yang terpercaya) di kalangan masyarakat Makkah. Kejujuran dan amanah beliau sangat terkenal sehingga bahkan musuh-musuhnya pun menitipkan harta kepada beliau.\n\nSifat mulia ini menjadi pondasi kuat dalam penyebaran dakwah Islam. Ketika beliau menyampaikan risalah, orang-orang Makkah tahu bahwa Muhammad bukanlah pembohong.\n\nBahkan Abu Jahal yang memusuhi Islam pun mengakui, \"Kami tidak mendustakanmu Muhammad, tapi kami mendustakan apa yang kamu bawa.\" Ini membuktikan bahwa kredibilitas pribadi Rasulullah SAW tidak pernah diragukan.",
+                'content' => '
+                    Sebelum menjadi nabi, Muhammad SAW sudah dikenal sebagai Al-Amin (yang terpercaya) 
+                    di kalangan masyarakat Makkah. Kejujuran dan amanah beliau sangat terkenal sehingga 
+                    bahkan musuh-musuhnya pun menitipkan harta kepada beliau.
+
+                    Sifat mulia ini menjadi pondasi kuat dalam penyebaran dakwah Islam. Ketika beliau 
+                    menyampaikan risalah, orang-orang Makkah tahu bahwa Muhammad bukanlah pembohong.
+
+                    Bahkan Abu Jahal yang memusuhi Islam pun mengakui, 
+                    "Kami tidak mendustakanmu Muhammad, tapi kami mendustakan apa yang kamu bawa."
+
+                    Ini membuktikan bahwa kredibilitas pribadi Rasulullah SAW tidak pernah diragukan.
+                    ',
                 'status' => 'approved',
-                'votes' => 245,
-                'views' => 5430,
+                'votes' => 0,
+                'views' => 0,
             ],
             [
                 'category_id' => 2,
                 'user_id' => $createdUsers[1]->id,
                 'title' => 'Kesabaran Nabi Ayub: Ujian yang Berlangsung 18 Tahun',
                 'excerpt' => 'Nabi Ayub AS mengalami ujian luar biasa selama 18 tahun: kehilangan harta, anak, kesehatan, hingga dijauhi semua orang kecuali istrinya.',
-                'content' => "Nabi Ayub AS adalah teladan kesabaran dalam menghadapi musibah. Beliau kehilangan semua harta kekayaannya, seluruh anaknya meninggal, tubuhnya penuh penyakit kulit yang parah, dan dijauhi oleh semua orang.\n\nSelama 18 tahun ujian itu berlangsung, Nabi Ayub AS tidak pernah sekalipun mengeluh kepada Allah. Yang setia menemani hanya istrinya.\n\nKetika beliau berdoa, Allah sembuhkan penyakitnya dengan mata air yang muncul dari tanah. Allah kembalikan semua hartanya berlipat ganda, dan karuniakan anak-anak yang baru.\n\nKisah ini mengajarkan kita bahwa kesabaran dalam ujian akan berbuah kebaikan yang berlipat ganda dari Allah SWT.",
+                'content' => '
+                    Nabi Ayub AS adalah teladan kesabaran dalam menghadapi musibah. Beliau kehilangan semua 
+                    harta kekayaannya, seluruh anaknya meninggal, tubuhnya penuh penyakit kulit yang parah, 
+                    dan dijauhi oleh semua orang.
+
+                    Selama 18 tahun ujian itu berlangsung, Nabi Ayub AS tidak pernah sekalipun mengeluh 
+                    kepada Allah. Yang setia menemani hanya istrinya.
+
+                    Ketika beliau berdoa, Allah sembuhkan penyakitnya dengan mata air yang muncul dari tanah. 
+                    Allah kembalikan semua hartanya berlipat ganda, dan karuniakan anak-anak yang baru.
+
+                    Kisah ini mengajarkan kita bahwa kesabaran dalam ujian akan berbuah kebaikan yang 
+                    berlipat ganda dari Allah SWT.
+                    ',
                 'status' => 'approved',
-                'votes' => 312,
-                'views' => 6780,
+                'votes' => 0,
+                'views' => 0,
             ],
             [
                 'category_id' => 3,
                 'user_id' => $createdUsers[2]->id,
                 'title' => 'Umar bin Khattab Menangis di Malam Hari',
                 'excerpt' => 'Di siang hari Umar tegas menegakkan hukum, tapi di malam hari beliau menangis takut tidak bisa memenuhi amanah sebagai pemimpin.',
-                'content' => "Umar bin Khattab RA dikenal sebagai khalifah yang tegas dan adil. Di siang hari, beliau memeriksa pasar, memastikan tidak ada pengurangan timbangan, dan menegakkan hukum tanpa pandang bulu.\n\nNamun siapa sangka, di malam hari beliau adalah sosok yang berbeda. Umar sering menangis dalam shalat malam karena takut tidak bisa memenuhi amanah sebagai pemimpin umat.\n\nBeliau pernah berkata, \"Seandainya ada seekor kambing mati kelaparan di tepi sungai Eufrat, aku khawatir Allah akan memintai pertanggungjawaban dariku.\"\n\nKepemimpinan beliau menjadi teladan bagi pemimpin di seluruh dunia: tegas dalam hukum, tapi lembut dalam hati.",
+                'content' => '
+                    Umar bin Khattab RA dikenal sebagai khalifah yang tegas dan adil. Di siang hari, beliau 
+                    memeriksa pasar, memastikan tidak ada pengurangan timbangan, dan menegakkan hukum tanpa 
+                    pandang bulu.
+
+                    Namun siapa sangka, di malam hari beliau adalah sosok yang berbeda. Umar sering menangis 
+                    dalam shalat malam karena takut tidak bisa memenuhi amanah sebagai pemimpin umat.
+
+                    Beliau pernah berkata, 
+                    "Seandainya ada seekor kambing mati kelaparan di tepi sungai Eufrat, aku khawatir Allah 
+                    akan memintai pertanggungjawaban dariku."
+
+                    Kepemimpinan beliau menjadi teladan bagi pemimpin di seluruh dunia: tegas dalam hukum, 
+                    tapi lembut dalam hati.
+                    ',
                 'status' => 'approved',
-                'votes' => 428,
-                'views' => 8920,
+                'votes' => 0,
+                'views' => 0,
             ],
             [
                 'category_id' => 4,
                 'user_id' => $createdUsers[3]->id,
                 'title' => 'Bilal bin Rabah: Muadzin Pertama yang Dianiaya karena Islam',
                 'excerpt' => 'Bilal, budak berkulit hitam yang disiksa di padang pasir Makkah, namun tetap teguh dengan ucapan "Ahad, Ahad!" (Allah Maha Esa).',
-                'content' => "Bilal bin Rabah adalah salah satu sahabat pertama yang masuk Islam. Sebagai budak, beliau mengalami siksaan luar biasa dari tuannya, Umayyah bin Khalaf.\n\nBilal diseret ke padang pasir Makkah yang panas terik, dadanya ditindih batu besar, namun beliau tetap berucap \"Ahad! Ahad!\" (Allah Maha Esa!).\n\nAbu Bakar akhirnya membebaskan Bilal dengan membeli dan memerdekakannya. Nabi Muhammad SAW sangat menyayangi Bilal dan menjadikannya muadzin pertama dalam Islam.\n\nSuara adzan Bilal yang merdu membuat Rasulullah SAW berkata, \"Rindu aku mendengar langkah-langkah Bilal di surga.\" SubhanAllah!\n\nKisah Bilal mengajarkan kita bahwa Islam tidak memandang warna kulit atau status sosial. Yang dilihat Allah adalah ketaqwaan.",
+                'content' => '
+                    Bilal bin Rabah adalah salah satu sahabat pertama yang masuk Islam. Sebagai budak, beliau 
+                    mengalami siksaan luar biasa dari tuannya, Umayyah bin Khalaf.
+
+                    Bilal diseret ke padang pasir Makkah yang panas terik, dadanya ditindih batu besar, namun 
+                    beliau tetap berucap "Ahad! Ahad!" (Allah Maha Esa!).
+
+                    Abu Bakar akhirnya membebaskan Bilal dengan membeli dan memerdekakannya. Nabi Muhammad 
+                    SAW sangat menyayangi Bilal dan menjadikannya muadzin pertama dalam Islam.
+
+                    Suara adzan Bilal yang merdu membuat Rasulullah SAW berkata, 
+                    "Rindu aku mendengar langkah-langkah Bilal di surga."
+
+                    Kisah Bilal mengajarkan kita bahwa Islam tidak memandang warna kulit atau status sosial. 
+                    Yang dilihat Allah adalah ketaqwaan.
+                    ',
                 'status' => 'approved',
-                'votes' => 389,
-                'views' => 7650,
+                'votes' => 0,
+                'views' => 0,
             ],
             [
                 'category_id' => 5,
                 'user_id' => $createdUsers[4]->id,
                 'title' => 'Ibnu Sina: Dokter Jenius yang Hafal Al-Quran di Usia 10 Tahun',
                 'excerpt' => 'Ibnu Sina (Avicenna) adalah jenius Muslim yang karyanya "Al-Qanun fi at-Tibb" menjadi referensi medis Eropa selama 600 tahun.',
-                'content' => "Ibnu Sina, yang dikenal di Barat sebagai Avicenna, adalah salah satu ilmuwan terbesar dalam sejarah Islam. Di usia 10 tahun, beliau sudah hafal Al-Quran!\n\nPada usia 16 tahun, Ibnu Sina sudah dipercaya mengobati Sultan Samaniyah. Kejeniusannya dalam bidang kedokteran menghasilkan karya monumental \"Al-Qanun fi at-Tibb\" (The Canon of Medicine).\n\nBuku ini menjadi referensi utama di universitas-universitas Eropa selama lebih dari 600 tahun! Bahkan hingga abad ke-18, mahasiswa kedokteran di Eropa masih mempelajari karya Ibnu Sina.\n\nSelain kedokteran, beliau juga ahli dalam filsafat, matematika, astronomi, dan kimia. Ibnu Sina menulis lebih dari 450 karya ilmiah sepanjang hidupnya.\n\nKisah ini membuktikan bahwa kejayaan peradaban Islam dibangun atas fondasi ilmu pengetahuan yang kuat, dengan Al-Quran sebagai sumber inspirasi utama.",
+                'content' => '
+                    Ibnu Sina, yang dikenal di Barat sebagai Avicenna, adalah salah satu ilmuwan terbesar 
+                    dalam sejarah Islam. Di usia 10 tahun, beliau sudah hafal Al-Quran!
+
+                    Pada usia 16 tahun, Ibnu Sina sudah dipercaya mengobati Sultan Samaniyah. Kejeniusannya 
+                    dalam bidang kedokteran menghasilkan karya monumental "Al-Qanun fi at-Tibb" 
+                    (The Canon of Medicine).
+
+                    Buku ini menjadi referensi utama di universitas-universitas Eropa selama lebih dari 
+                    600 tahun! Bahkan hingga abad ke-18, mahasiswa kedokteran di Eropa masih mempelajari 
+                    karya Ibnu Sina.
+
+                    Selain kedokteran, beliau juga ahli dalam filsafat, matematika, astronomi, dan kimia. 
+                    Ibnu Sina menulis lebih dari 450 karya ilmiah sepanjang hidupnya.
+
+                    Kisah ini membuktikan bahwa kejayaan peradaban Islam dibangun atas fondasi ilmu 
+                    pengetahuan yang kuat, dengan Al-Quran sebagai sumber inspirasi utama.
+                    ',
                 'status' => 'approved',
-                'votes' => 456,
-                'views' => 9340,
+                'votes' => 0,
+                'views' => 0,
             ],
             [
                 'category_id' => 6,
                 'user_id' => $createdUsers[0]->id,
                 'title' => 'Khadijah binti Khuwailid: Wanita Pertama yang Masuk Islam',
                 'excerpt' => 'Khadijah adalah istri pertama Nabi Muhammad SAW yang menjadi penyokong utama dakwah Islam di masa-masa awal.',
-                'content' => "Khadijah binti Khuwailid adalah wanita mulia yang menjadi istri pertama Nabi Muhammad SAW. Beliau adalah wanita kaya raya, pedagang sukses, dan sangat dihormati di Makkah.\n\nKetika Muhammad SAW menerima wahyu pertama di Gua Hira dan pulang dalam keadaan gemetar, Khadijah-lah yang menenangkannya. Beliau berkata, \"Demi Allah, Allah tidak akan menghinakanmu. Karena engkau adalah orang yang menyambung silaturahmi, menolong yang lemah, dan berbuat baik kepada manusia.\"\n\nKhadijah adalah orang pertama yang beriman kepada Muhammad sebagai Rasulullah. Seluruh hartanya dikorbankan untuk mendukung dakwah Islam.\n\nSelama 25 tahun pernikahan mereka, Nabi Muhammad SAW tidak pernah menikahi wanita lain. Bahkan setelah Khadijah wafat, beliau selalu mengenang kebaikannya dengan penuh cinta.\n\nKhadijah adalah teladan istri yang shalihah, ibu yang penuh kasih sayang, dan wanita karir yang sukses tanpa meninggalkan kewajiban agamanya.",
+                'content' => '
+                    Khadijah binti Khuwailid adalah wanita mulia yang menjadi istri pertama Nabi Muhammad SAW. 
+                    Beliau adalah wanita kaya raya, pedagang sukses, dan sangat dihormati di Makkah.
+
+                    Ketika Muhammad SAW menerima wahyu pertama di Gua Hira dan pulang dalam keadaan gemetar, 
+                    Khadijah-lah yang menenangkannya. Beliau berkata, 
+                    "Demi Allah, Allah tidak akan menghinakanmu. Karena engkau adalah orang yang menyambung 
+                    silaturahmi, menolong yang lemah, dan berbuat baik kepada manusia."
+
+                    Khadijah adalah orang pertama yang beriman kepada Muhammad sebagai Rasulullah. Seluruh 
+                    hartanya dikorbankan untuk mendukung dakwah Islam.
+
+                    Selama 25 tahun pernikahan mereka, Nabi Muhammad SAW tidak pernah menikahi wanita lain. 
+                    Bahkan setelah Khadijah wafat, beliau selalu mengenang kebaikannya dengan penuh cinta.
+
+                    Khadijah adalah teladan istri yang shalihah, ibu yang penuh kasih sayang, dan wanita karir 
+                    yang sukses tanpa meninggalkan kewajiban agamanya.
+                    ',
                 'status' => 'approved',
-                'votes' => 534,
-                'views' => 11200,
+                'votes' => 0,
+                'views' => 0,
             ],
             [
                 'category_id' => 7,
                 'user_id' => $createdUsers[1]->id,
                 'title' => 'Dajjal: Fitnah Terbesar di Akhir Zaman',
                 'excerpt' => 'Dajjal adalah fitnah terbesar yang akan muncul di akhir zaman. Setiap nabi memperingatkan umatnya tentang bahaya Dajjal.',
-                'content' => "Dajjal adalah makhluk yang akan muncul di akhir zaman dan menjadi fitnah terbesar bagi umat manusia. Rasulullah SAW bersabda bahwa tidak ada fitnah yang lebih besar dari penciptaan Adam hingga hari kiamat selain fitnah Dajjal.\n\nDajjal digambarkan sebagai sosok laki-laki dengan satu mata buta, dan di dahinya tertulis \"kafir\" yang dapat dibaca oleh orang mukmin. Dia akan mengklaim sebagai tuhan dan memiliki kemampuan luar biasa yang menyerupai mukjizat.\n\nDajjal akan muncul dari arah timur dan berkeliling dunia selama 40 hari. Hari pertamanya seperti satu tahun, hari kedua seperti satu bulan, hari ketiga seperti satu minggu, dan seterusnya seperti hari biasa.\n\nRasulullah SAW mengajarkan kita untuk berlindung dari fitnah Dajjal dengan membaca 10 ayat pertama Surat Al-Kahfi dan memperbanyak ibadah.\n\nAkhirnya, Dajjal akan dibunuh oleh Nabi Isa AS di pintu Ludd (Palestina), dan itulah akhir dari fitnah terbesar sepanjang sejarah manusia.",
+                'content' => '
+                    Dajjal adalah makhluk yang akan muncul di akhir zaman dan menjadi fitnah terbesar bagi 
+                    umat manusia. Rasulullah SAW bersabda bahwa tidak ada fitnah yang lebih besar sejak 
+                    penciptaan Adam hingga hari kiamat selain fitnah Dajjal.
+
+                    Dajjal digambarkan sebagai sosok laki-laki dengan satu mata buta, dan di dahinya tertulis 
+                    "kafir" yang dapat dibaca oleh orang mukmin. Ia akan mengklaim sebagai tuhan dan memiliki 
+                    kemampuan luar biasa yang menyerupai mukjizat.
+
+                    Dajjal akan muncul dari arah timur dan berkeliling dunia selama 40 hari. Hari pertama 
+                    seperti satu tahun, hari kedua seperti satu bulan, hari ketiga seperti satu minggu, dan 
+                    seterusnya seperti hari biasa.
+
+                    Rasulullah SAW mengajarkan kita untuk berlindung dari fitnah Dajjal dengan membaca 10 
+                    ayat pertama Surat Al-Kahfi dan memperbanyak ibadah.
+
+                    Akhirnya, Dajjal akan dibunuh oleh Nabi Isa AS di pintu Ludd (Palestina), dan itu menjadi 
+                    akhir dari fitnah terbesar sepanjang sejarah manusia.
+                    ',
                 'status' => 'approved',
-                'votes' => 612,
-                'views' => 13850,
+                'votes' => 0,
+                'views' => 0,
             ],
         ];
 
@@ -244,7 +350,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 4,
                 'type' => 'video',
                 'priority' => 'high',
-                'votes' => 156,
+                'votes' => 0,
                 'status' => 'pending',
             ],
             [
@@ -254,7 +360,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 5,
                 'type' => 'artikel',
                 'priority' => 'medium',
-                'votes' => 89,
+                'votes' => 0,
                 'status' => 'pending',
             ],
             [
@@ -264,7 +370,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'type' => 'video',
                 'priority' => 'high',
-                'votes' => 203,
+                'votes' => 0,
                 'status' => 'pending',
             ],
         ];
@@ -305,10 +411,10 @@ class DatabaseSeeder extends Seeder
         }
         echo "========================================\n";
         echo "📊 Statistics:\n";
-        echo "   Categories: " . Category::count() . "\n";
-        echo "   Videos: " . Video::count() . "\n";
-        echo "   Articles: " . Artikel::count() . "\n";
-        echo "   Requests: " . ContentRequest::count() . "\n";
+        echo '   Categories: '.Category::count()."\n";
+        echo '   Videos: '.Video::count()."\n";
+        echo '   Articles: '.Artikel::count()."\n";
+        echo '   Requests: '.ContentRequest::count()."\n";
         echo "========================================\n\n";
     }
 }

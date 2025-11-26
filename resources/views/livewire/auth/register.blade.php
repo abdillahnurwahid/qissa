@@ -1,3 +1,4 @@
+{{-- results/views/livewire/auth/register.blade.php --}}
 <div class="bg-[var(--mint)] min-h-screen flex items-center justify-center p-6">
     <div class="w-full max-w-md">
         <div class="brand-gradient rounded-2xl p-[2px] shadow-xl">

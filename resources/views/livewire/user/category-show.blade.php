@@ -1,3 +1,4 @@
+{{-- resources/views/livewire/user/category-show.blade.php --}}
 <div>
     <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
         <a href="{{ route('user.dashboard') }}" class="hover:text-[var(--burgundy)]">Home</a>

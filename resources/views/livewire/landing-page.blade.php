@@ -1,3 +1,4 @@
+{{-- resources/views/livewire/landing-page.blade.php --}}
 <div>
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -21,9 +22,9 @@
 
     <div class="brand-gradient text-white py-20">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-5xl font-bold mb-4">Belajar Sejarah Islam</h1>
+            <h1 class="text-5xl font-bold mb-4">Kenali Jejak Sejarah Islam</h1>
             <p class="text-xl mb-8 text-white text-opacity-90">
-                Platform video dan artikel terbaik untuk memahami kisah-kisah inspiratif dalam Islam
+                Pelajari kisah-kisah inspiratif yang membentuk peradaban melalui video dan artikel pilihan.
             </p>
             
             <div class="flex flex-wrap justify-center gap-4 mb-12">
@@ -154,7 +155,7 @@
                 </div>
                 <span class="text-xl font-bold">Qissa+</span>
             </div>
-            <p class="text-gray-400 text-sm">© 2025 Qissa+. Platform Pembelajaran Islami Terbaik</p>
+            <p class="text-gray-400 text-sm">© 2025 Qissa+. Teman Anda dalam Belajar Sejarah Islam</p>
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('video_url');
-            $table->integer('duration'); // in minutes
+            $table->integer('duration'); 
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->integer('views')->default(0);
             $table->timestamps();

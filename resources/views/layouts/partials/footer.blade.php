@@ -1,3 +1,4 @@
+{{-- footer.blade.php --}}
 <div class="bg-[var(--burgundy)] text-white py-6 mt-16">
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -8,7 +9,7 @@
                     </div>
                     <span class="text-xl font-bold">Qissa+</span>
                 </div>
-                <p class="text-gray-200 text-sm">Platform pembelajaran video dan artikel terbaik untuk meningkatkan skill Anda.</p>
+                <p class="text-gray-200 text-sm">Pelajari kisah-kisah inspiratif yang membentuk peradaban melalui video dan artikel pilihan.</p>
             </div>
             <div></div>
             <div>
@@ -19,7 +20,7 @@
             </div>
         </div>
         <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center text-sm text-gray-200">
-            <p>© 2025 Qissa+. dibuat dengan setulus hati</p>
+            <p>© 2025 Qissa+. Teman Anda dalam Belajar Sejarah Islam </p>
         </div>
     </div>
 </div>

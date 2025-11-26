@@ -1,3 +1,4 @@
+{{-- admin-header.blade.php --}}
 <div class="brand-gradient text-white py-6 shadow-md">
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <div class="flex items-center gap-3">

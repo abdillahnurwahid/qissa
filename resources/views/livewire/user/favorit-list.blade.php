@@ -1,3 +1,4 @@
+{{-- resources/views/livewire/user/favorit-list.blade.php --}}
 <div>
     <h2 class="text-2xl font-bold text-[var(--burgundy)] mb-6">Konten Favorit Kamu</h2>
 

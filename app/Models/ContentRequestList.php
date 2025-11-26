@@ -14,53 +14,47 @@ class ContentRequestList extends Component
 {
     public $statusFilter = 'all';
 
-    public function vote($requestId)
-    {
-        $request = ContentRequest::findOrFail($requestId);
-        
-        // Check if already voted
-        if ($request->hasVotedBy(auth()->user())) {
-            session()->flash('error', '❌ Anda sudah memberikan vote untuk request ini!');
-            return;
-        }
-
-        // Create vote record
-        ContentRequestVote::create([
-            'user_id' => auth()->id(),
-            'content_request_id' => $requestId,
-        ]);
-
-        // Increment vote count
-        $request->increment('votes');
-
-        session()->flash('success', '✅ Vote berhasil! Terima kasih atas dukungannya.');
-        
-        // Force refresh the component
-        $this->dispatch('$refresh');
+public function vote($requestId)
+{
+    $request = ContentRequest::findOrFail($requestId);
+    
+    \Log::info('Vote attempt', [
+        'user_id' => auth()->id(),
+        'request_id' => $requestId,
+        'has_voted' => $request->hasVotedBy(auth()->user())
+    ]);
+    
+    if ($request->hasVotedBy(auth()->user())) {
+        session()->flash('error', '❌ Anda sudah memberikan vote untuk request ini!');
+        return;
     }
+
+    ContentRequestVote::create([
+        'user_id' => auth()->id(),
+        'content_request_id' => $requestId,
+    ]);
+
+    $request->incrementVotes();
+
+    session()->flash('success', '✅ Vote berhasil! Terima kasih atas dukungannya.');
+}
 
     public function unvote($requestId)
     {
         $request = ContentRequest::findOrFail($requestId);
         
-        // Check if not voted yet
         if (!$request->hasVotedBy(auth()->user())) {
             session()->flash('error', '❌ Anda belum memberikan vote untuk request ini!');
             return;
         }
 
-        // Delete vote record
         ContentRequestVote::where('user_id', auth()->id())
             ->where('content_request_id', $requestId)
             ->delete();
 
-        // Decrement vote count
-        $request->decrement('votes');
+        $request->decrementVotes();
 
         session()->flash('success', '✅ Vote berhasil dibatalkan!');
-        
-        // Force refresh the component
-        $this->dispatch('$refresh');
     }
 
     public function render()

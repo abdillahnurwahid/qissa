@@ -8,18 +8,18 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('content_request_votes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->morphs('favoritable'); 
+            $table->foreignId('content_request_id')->constrained()->onDelete('cascade');
             $table->timestamps();
 
-            $table->unique(['user_id', 'favoritable_id', 'favoritable_type']);
+            $table->unique(['user_id', 'content_request_id']);
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('content_request_votes');
     }
 };

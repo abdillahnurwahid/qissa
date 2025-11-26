@@ -1,3 +1,4 @@
+{{-- resources/views/livewire/user/artikel-detail.blade.php --}}
 <div>
     <div class="mb-6">
         <a href="{{ route('user.artikel') }}" class="text-[var(--burgundy)] text-sm font-semibold hover:underline">
