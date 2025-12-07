@@ -118,7 +118,6 @@
                             <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
                                 <span>✍️ {{ $artikel->user->name }}</span>
                                 <span>👁️ {{ number_format($artikel->views) }} views</span>
-                                <span>⭐ {{ number_format($artikel->votes) }} votes</span>
                             </div>
                             
                             <a 

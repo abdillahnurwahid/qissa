@@ -20,7 +20,6 @@ class VideoList extends Component
 
     public function mount()
     {
-        // Get category from URL query parameter
         $this->selectedCategory = request()->query('category');
     }
 
@@ -40,7 +39,7 @@ class VideoList extends Component
         
         $this->trackView($video, 'video');
         
-        return redirect()->away($video->video_url);
+        $this->js("window.open('{$video->video_url}', '_blank')");
     }
 
     private function trackView($content, $type)
@@ -84,25 +83,25 @@ class VideoList extends Component
     }
 
     public function render()
-{
-    $categories = Category::withCount('videos')->get();
-    
-    $videos = Video::approved()
-        ->when($this->search, function($query) {
-            $query->where('title', 'like', '%' . $this->search . '%')
-                  ->orWhere('description', 'like', '%' . $this->search . '%');
-        })
-        ->when($this->selectedCategory, function($query) {
-            $query->where('category_id', $this->selectedCategory);
-        })
-        ->with('category')
-        ->latest()
-        ->get();
+    {
+        $categories = Category::withCount('videos')->get();
+        
+        $videos = Video::approved()
+            ->when($this->search, function($query) {
+                $query->where('title', 'like', '%' . $this->search . '%')
+                      ->orWhere('description', 'like', '%' . $this->search . '%');
+            })
+            ->when($this->selectedCategory, function($query) {
+                $query->where('category_id', $this->selectedCategory);
+            })
+            ->with('category')
+            ->latest()
+            ->get();
 
-    $currentCategory = $this->selectedCategory 
-        ? Category::find($this->selectedCategory) 
-        : null;
+        $currentCategory = $this->selectedCategory 
+            ? Category::find($this->selectedCategory) 
+            : null;
 
-    return view('livewire.user.video-list', compact('videos', 'categories', 'currentCategory'));
+        return view('livewire.user.video-list', compact('videos', 'categories', 'currentCategory'));
     }
 }

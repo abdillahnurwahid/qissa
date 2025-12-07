@@ -78,7 +78,6 @@
                             <span>✍️ {{ $artikel->user->name }}</span>
                             <span>📅 {{ $artikel->created_at->diffForHumans() }}</span>
                             <span>👁️ {{ number_format($artikel->views) }} views</span>
-                            <span>⭐ {{ number_format($artikel->votes) }} votes</span>
                         </div>
                         
                         <div class="flex gap-2">

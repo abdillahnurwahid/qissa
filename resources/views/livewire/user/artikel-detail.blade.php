@@ -24,10 +24,7 @@
                 👁️ {{ number_format($artikel->views) }} views
             </span>
             <span class="flex items-center gap-1">
-                ⭐ {{ number_format($artikel->votes) }} votes
-            </span>
-            <span class="flex items-center gap-1">
-        💬 {{ $artikel->comments->count() }} komentar
+                💬 {{ $artikel->comments->count() }} komentar
             </span>
         </div>
 
